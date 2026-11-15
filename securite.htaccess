@@ -1,0 +1,5 @@
+# Bloquer l'accès au dossier .git
+RedirectMatch 404 /\.git
+
+# Empêcher le listage des répertoires
+Options -Indexes
