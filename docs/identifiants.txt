@@ -1,0 +1,20 @@
+LA BRUTE – Comptes de test pour la soutenance
+(créés par bdd/donnees_test.sql — NE PAS déposer ce dossier docs/ sur le serveur)
+
+Catégorie                                   Login           Mot de passe
+-------------------------------------------------------------------------
+Administrateur                              admin           Admin2026!
+Joueur sans brute                           joueur_neuf     Arene2026!
+Joueur avec brute, sans défi                joueur_simple   Arene2026!
+Auteur d'un défi ouvert avec candidatures   auteur1         Arene2026!
+Candidat en attente (+ question posée)      candidat1       Arene2026!
+Candidat en attente + auteur d'un défi vide candidat2       Arene2026!
+Vainqueur d'un combat                       champion        Arene2026!
+Perdant d'un combat (candidature acceptée)  perdant         Arene2026!
+Compte désactivé par l'admin                banni           Arene2026!
+
+Scénario de recette rapide :
+1. auteur1   → Mon espace → défi « Qui osera affronter le Marteau ? » → choisir un adversaire.
+2. candidat1 / candidat2 → Mon espace → l'un voit « Acceptée » + Résultat, l'autre « Non retenue ».
+3. admin     → Administration → supprimer un défi ouvert / désactiver un compte.
+4. banni     → la connexion est refusée (compte désactivé).

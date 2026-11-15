@@ -1,0 +1,307 @@
+/*
+ * Thème "Arène La Brute" — complète Bootstrap 5.3 en mode sombre (data-bs-theme="dark" dans header.php).
+ * Organisation : 1. Variables  2. Base  3. Navigation & pied de page  4. Boutons
+ *                5. Composants (cartes, avatars, encarts)  6. Page d'accueil  7. Pages défi / combat
+ */
+
+/* ---------- 1. Variables ---------- */
+:root {
+  --arene-fond: #0f110e;
+  --arene-carte: #171a15;
+  --arene-encart: #121510;
+  --arene-bordure: #272c24;
+  --arene-lime: #d2f854;
+  --arene-lime-survol: #bfe640;
+  --arene-texte: #f4f6f2;
+  --arene-texte-doux: #98a093;
+}
+
+/* Bootstrap lit ces variables : on les adapte au thème */
+[data-bs-theme="dark"] {
+  --bs-body-bg: var(--arene-fond);
+  --bs-body-color: var(--arene-texte);
+  --bs-secondary-color: var(--arene-texte-doux);
+  --bs-border-color: var(--arene-bordure);
+  --bs-tertiary-bg: var(--arene-encart);
+  --bs-link-color: var(--arene-lime);
+  --bs-link-color-rgb: 210, 248, 84;
+  --bs-link-hover-color: var(--arene-lime-survol);
+  --bs-link-hover-color-rgb: 191, 230, 64;
+  --bs-card-bg: var(--arene-carte);
+  --bs-focus-ring-color: rgba(210, 248, 84, 0.25);
+}
+
+/* ---------- 2. Base ---------- */
+body {
+  font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+}
+
+.text-lime {
+  color: var(--arene-lime);
+}
+
+.min-w-0 {
+  min-width: 0;
+}
+
+.form-control:focus,
+.form-select:focus {
+  border-color: var(--arene-lime);
+  box-shadow: 0 0 0 0.2rem rgba(210, 248, 84, 0.15);
+}
+
+/* ---------- 3. Navigation & pied de page ---------- */
+.navbar-arena {
+  border-bottom: 1px solid var(--arene-bordure);
+  padding: 1rem 0;
+}
+
+.navbar-arena .nav-link {
+  color: var(--arene-texte-doux);
+  font-weight: 500;
+}
+
+.navbar-arena .nav-link:hover,
+.navbar-arena .nav-link:focus,
+.navbar-arena .nav-link.active {
+  color: var(--arene-texte);
+}
+
+.navbar-arena .nav-link.active {
+  box-shadow: inset 0 -2px 0 var(--arene-lime);
+}
+
+.brand-logo {
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid var(--arene-lime);
+  margin-right: 0.65rem;
+  background-color: var(--arene-lime);
+}
+
+.brand-sous-titre {
+  border-left: 1px solid var(--arene-bordure);
+  color: var(--arene-texte-doux);
+  font-weight: 400;
+  font-size: 0.875rem;
+}
+
+.footer-arena {
+  border-top: 1px solid var(--arene-bordure);
+}
+
+/* Onglets de filtre (page des défis) */
+.nav-arena .nav-link {
+  color: var(--arene-texte-doux);
+}
+
+.nav-arena .nav-link.active {
+  background-color: var(--arene-lime);
+  color: var(--arene-fond);
+  font-weight: 600;
+}
+
+/* ---------- 4. Boutons ---------- */
+.btn-lime {
+  --bs-btn-bg: var(--arene-lime);
+  --bs-btn-border-color: var(--arene-lime);
+  --bs-btn-color: var(--arene-fond);
+  --bs-btn-hover-bg: var(--arene-lime-survol);
+  --bs-btn-hover-border-color: var(--arene-lime-survol);
+  --bs-btn-hover-color: var(--arene-fond);
+  --bs-btn-active-bg: var(--arene-lime-survol);
+  --bs-btn-active-border-color: var(--arene-lime-survol);
+  --bs-btn-active-color: var(--arene-fond);
+  font-weight: 700;
+  border-radius: 8px;
+}
+
+.btn-arena-outline {
+  --bs-btn-bg: transparent;
+  --bs-btn-border-color: #3a4235;
+  --bs-btn-color: var(--arene-texte);
+  --bs-btn-hover-bg: var(--arene-carte);
+  --bs-btn-hover-border-color: var(--arene-lime);
+  --bs-btn-hover-color: var(--arene-lime);
+  --bs-btn-active-bg: var(--arene-carte);
+  --bs-btn-active-border-color: var(--arene-lime);
+  --bs-btn-active-color: var(--arene-lime);
+  font-weight: 600;
+  border-radius: 8px;
+}
+
+.btn-lime,
+.btn-arena-outline {
+  transition: background-color 0.2s, border-color 0.2s, transform 0.15s;
+}
+
+.btn-lime:hover,
+.btn-arena-outline:hover {
+  transform: translateY(-1px);
+}
+
+/* ---------- 5. Composants ---------- */
+.card {
+  border-radius: 12px;
+}
+
+.card-header {
+  background-color: var(--arene-encart);
+}
+
+/* Avatars : taille normale + variantes */
+.avatar {
+  width: 84px;
+  height: 84px;
+  object-fit: cover;
+  border-radius: 12px;
+  border: 2px solid var(--arene-bordure);
+  background-color: var(--arene-encart);
+  flex-shrink: 0;
+}
+
+.avatar-lg {
+  width: 96px;
+  height: 96px;
+}
+
+.avatar-sm {
+  width: 56px;
+  height: 56px;
+}
+
+.avatar-xs {
+  width: 40px;
+  height: 40px;
+  border-radius: 8px;
+}
+
+/* Choix de l'avatar (boutons radio masqués, image cliquable) */
+.choix-avatar-label {
+  cursor: pointer;
+  border-radius: 14px;
+  padding: 3px;
+  border: 2px solid transparent;
+  display: block;
+}
+
+.btn-check:checked + .choix-avatar-label {
+  border-color: var(--arene-lime);
+}
+
+.btn-check:focus-visible + .choix-avatar-label {
+  box-shadow: 0 0 0 0.2rem rgba(210, 248, 84, 0.35);
+}
+
+/* Encart en retrait (résumé d'une brute, rappel d'un défi) */
+.encart {
+  background-color: var(--arene-encart);
+  border: 1px solid var(--arene-bordure);
+  border-radius: 10px;
+  padding: 0.85rem 1rem;
+}
+
+/* Message d'un candidat */
+.citation {
+  background-color: var(--arene-encart);
+  border-left: 3px solid var(--arene-lime);
+  border-radius: 6px;
+  padding: 0.4rem 0.7rem;
+  font-style: italic;
+}
+
+/* ---------- 6. Page d'accueil ---------- */
+.eyebrow-lime {
+  color: var(--arene-lime);
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.hero-title {
+  font-size: clamp(2.5rem, 5vw, 4.2rem);
+  font-weight: 800;
+  line-height: 1.05;
+  letter-spacing: -0.03em;
+}
+
+.hero-title span {
+  color: var(--arene-lime);
+  display: block;
+}
+
+.hero-texte {
+  max-width: 520px;
+}
+
+.arena-arch {
+  background: radial-gradient(circle at 50% 35%, #2a331d 0%, #141712 75%);
+  border: 1px solid var(--arene-bordure);
+  border-radius: 180px 180px 16px 16px;
+  padding: 2.2rem 1.5rem 1.5rem;
+  text-align: center;
+}
+
+.arena-arch svg {
+  max-width: 100%;
+  height: auto;
+}
+
+.arena-arch-titre {
+  font-size: 0.7rem;
+}
+
+.arena-arch-pied {
+  border-top: 1px solid #2c3524;
+  font-size: 0.72rem;
+  letter-spacing: 0.08em;
+}
+
+.step-box {
+  border-top: 1px solid var(--arene-bordure);
+  padding-top: 1.25rem;
+}
+
+.step-num {
+  color: var(--arene-lime);
+  font-weight: 700;
+  font-size: 0.85rem;
+}
+
+/* ---------- 7. Pages défi / combat ---------- */
+.carte-defi-ouverte {
+  border-color: rgba(210, 248, 84, 0.35);
+}
+
+.carte-resultat {
+  border-color: var(--arene-lime);
+}
+
+.question {
+  border-bottom: 1px solid var(--arene-bordure);
+  padding-bottom: 0.75rem;
+}
+
+.reponse {
+  margin-left: 1rem;
+  padding-left: 0.75rem;
+  border-left: 2px solid var(--arene-bordure);
+}
+
+.combattant {
+  background-color: var(--arene-encart);
+  border: 1px solid var(--arene-bordure);
+  border-radius: 12px;
+}
+
+.combattant-vainqueur {
+  border: 2px solid var(--bs-success);
+}
+
+.compte-rendu {
+  list-style: none;
+  padding-left: 0;
+}
